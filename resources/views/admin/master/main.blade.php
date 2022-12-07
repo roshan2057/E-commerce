@@ -20,18 +20,16 @@
             </div>
             <div class="flex space-x-6 content-center">
                 <a href="{{url('/admin')}}" class="hover:text-white">Home</a>
+                <a href="{{url('/user')}}" class="hover:text-white">User Pannel</a>
                 <a href="{{route('users')}}" class="hover:text-white">Users</a>
                 <a href="{{route('addproduct')}}" class="hover:text-white">Add Product</a>
                 <a href="{{route('products')}}" class="hover:text-white">Products</a>
+                <a href="{{route('allorders')}}" class="hover:text-white">Orders</a>
                 <a href="" class="hover:text-white">Contact</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-dropdown-link>
+                    <input type="submit" value="Logout"  class="hover:text-white"> 
                 </form>
                 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -43,5 +44,33 @@ class AdminController extends Controller
         return redirect(route('addproduct'));
 
     }
+    public function order()
+    {
+       $order =Order::all();   
+       return view('admin.orders',compact('order'));
+    }
+    public function editproduct($productid){
+$product=products::find($productid);
+return view('admin.editproduct',compact('product'));
 
+    }
+
+    public function updateproduct(Request $request,$id){
+        $product = Products::find($id);
+        $data=$request->all();
+        $product->update($data);
+        return redirect(route('products'));
+    }
+
+    public function deleteproduct($productid){
+        $id= Products::find($productid);
+        $id->delete($id->id);
+        return redirect(route('products'));
+    } 
+    public function deleteorder($productid){
+        $id= Order::find($productid);
+        $id->delete($id->id);
+        return redirect(route('allorders'));
+    }
 }
+
